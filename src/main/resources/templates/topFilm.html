@@ -5,6 +5,19 @@
     <title>Top 10 Film</title>
 </head>
 <body>
-
+<div th:each="film : ${films}">
+    <span th:text="'Позиция: ' + ${film.getPosition()}"></span>
+    <br>
+    <span th:text="'Рейтинг: ' + ${film.getRating()}"></span>
+    <br>
+    <span th:text="'Название фильма: ' + ${film.getName()}"></span>
+    <br>
+    <span th:text="'Оригинальное название фильма: ' + ${film.getOriginalName()}"></span>
+    <br>
+    <span th:text="'Год выпуска: ' + ${film.getYear()}"></span>
+    <br>
+    <span th:text="'Количество проголосовавших людей: ' + ${film.getVotes()}"></span>
+    <hr>
+</div>
 </body>
 </html>
