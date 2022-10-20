@@ -25,15 +25,16 @@ public class FilmService {
     }
 
     @Cacheable("films")
-    public List<Film> findAll(){
-        log.info("find all");
-        return filmRepository.findAll();
+    public List<Film> findByYear(int year){
+        log.info("find by year");
+        return filmRepository.findByYear(year);
     }
 
-    @Cacheable(value = "films", key = "#film")
+    @Cacheable(value = "films", key = "#films.get(0).name")
     @Transactional
-    public Film save(Film film){
+    public List<Film> save(List<Film> films){
         log.info("save");
-        return filmRepository.save(film);
+        filmRepository.saveAll(films);
+        return films;
     }
 }
