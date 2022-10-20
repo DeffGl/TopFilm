@@ -26,14 +26,12 @@ public class FilmService {
 
     @Cacheable("films")
     public List<Film> findByYear(int year){
-        log.info("find by year");
         return filmRepository.findByYear(year);
     }
 
     @Cacheable(value = "films", key = "#films.get(0).name")
     @Transactional
     public List<Film> save(List<Film> films){
-        log.info("save");
         filmRepository.saveAll(films);
         return films;
     }
