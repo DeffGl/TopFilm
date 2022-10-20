@@ -39,8 +39,8 @@ public class FilmController {
 
             if (films.isEmpty()){
                 films = consumer.requestFilms(year.get());
+                filmService.save(films);
             }
-            filmService.save(films);
             List<FilmDTO> filmsDTO = films.stream().map(film -> modelMapper.map(film, FilmDTO.class)).toList();
             model.addAttribute("films", filmsDTO);
         }
