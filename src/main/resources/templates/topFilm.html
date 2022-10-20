@@ -5,18 +5,31 @@
     <title>Top 10 Film</title>
 </head>
 <body>
-<div th:each="film : ${films}">
-    <span th:text="'Позиция: ' + ${film.getPosition()}"></span>
+
+<form th:method="GET" action="/top/film">
+    <input type="text" name="year" placeholder="year"/>
+    <input type="submit" th:value="Send"/>
+</form>
+
+<hr>
+<div th:if="${films}" th:each="film : ${films}">
+    <b>Позиция: </b>
+    <span th:text="${film.getPosition()}"></span>
     <br>
+    <b>Рейтинг: </b>
     <span th:text="'Рейтинг: ' + ${film.getRating()}"></span>
     <br>
-    <span th:text="'Название фильма: ' + ${film.getName()}"></span>
+    <b>Название фильма: </b>
+    <span th:text="${film.getName()}"></span>
     <br>
-    <span th:text="'Оригинальное название фильма: ' + ${film.getOriginalName()}"></span>
+    <b>Оригинальное название фильма: </b>
+    <span th:text="${film.getOriginalName()}"></span>
     <br>
-    <span th:text="'Год выпуска: ' + ${film.getYear()}"></span>
+    <b>Год выпуска: </b>
+    <span th:text="${film.getYear()}"></span>
     <br>
-    <span th:text="'Количество проголосовавших людей: ' + ${film.getVotes()}"></span>
+    <b>Количество проголосовавших людей: </b>
+    <span th:text="${film.getVotes()}"></span>
     <hr>
 </div>
 </body>
